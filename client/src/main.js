@@ -3,7 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+// 移动端适配
+import 'lib-flexible'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

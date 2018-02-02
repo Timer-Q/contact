@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="content">
     login
   </section>
 </template>
@@ -9,3 +9,8 @@ export default {
 
 }
 </script>
+
+<style lang="sass" scoped>
+.content
+  font-size: 16px
+</style>
