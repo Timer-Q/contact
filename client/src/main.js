@@ -5,6 +5,13 @@ import App from './App'
 import router from './router'
 // 移动端适配
 import 'lib-flexible'
+import baseComponents from '@/base'
+
+Object.keys(baseComponents).forEach(key => {
+  console.log(baseComponents[key]['name'])
+  Vue.component(baseComponents[key]['name'], baseComponents[key])
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
