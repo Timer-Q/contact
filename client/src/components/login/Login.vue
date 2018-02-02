@@ -1,11 +1,11 @@
 <template>
   <section>
-      login
+    login
   </section>
 </template>
 
 <script>
 export default {
-  
+
 }
 </script>
