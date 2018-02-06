@@ -9,6 +9,7 @@
     border-style: solid;
     border-color: transparent;
     border-right-color: $borderColor;
+    margin-left: -$borderwidth;
     &:after {
         content: '';
         position: absolute;

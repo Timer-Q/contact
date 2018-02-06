@@ -1,3 +1,4 @@
 export default {
-  CHeader: () => import('@/base/header/Header.vue')
+  CHeader: () => import('@/base/header/header.vue'),
+  CInput: () => import('@/base/input')
 }

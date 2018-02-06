@@ -1,10 +1,14 @@
 <template>
   <header class="header">
-    <a v-if="isNeedBack" href="javascript:;" class="arrow-left"></a>
+    <span>
+      <a v-if="isNeedBack" href="javascript:;" class="arrow-left"></a>
+    </span>
     <section class="header-wrapper">
       {{headerText}}
     </section>
-    <slot name="header-right"></slot>
+    <slot name="header-right">
+      <span></span>
+    </slot>
   </header>
 </template>
 
@@ -25,19 +29,21 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/assets/styles/mixins/index.scss";
 .header {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
   background-color: $blue;
   color: #fff;
-  font-size: 30px;
-  padding: 10px 0;
+  font-size: 18px;
+  padding: px2Rem(10);
   .arrow-left {
-    @include arrow-left(20px, #fff, $blue);
-    float: left;
+    vertical-align: middle;
+    @include arrow-left(10px, #fff, $blue);
   }
   .header-wrapper {
-    margin: 0 auto;
-    width: 80%;
+    flex: 1;
     text-align: center;
   }
 }
