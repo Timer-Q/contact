@@ -1,4 +1,4 @@
-import CInput from './src/input.vue'
+import CInput from './src/field.vue'
 
 CInput.install = function (Vue) {
   Vue.component(CInput.name, CInput)

@@ -1,14 +1,14 @@
 <template>
   <header class="header">
-    <span>
+    <div class="header-left">
       <a v-if="isNeedBack" href="javascript:;" class="arrow-left"></a>
-    </span>
-    <section class="header-wrapper">
-      {{headerText}}
+    </div>
+    <section class="header-title">
+      {{title}}
     </section>
-    <slot name="header-right">
-      <span></span>
-    </slot>
+    <div class="header-right">
+      <slot name="header-right"></slot>
+    </div>
   </header>
 </template>
 
@@ -20,7 +20,7 @@ export default {
       type: Boolean,
       default: true
     },
-    headerText: {
+    title: {
       type: String,
       default: '首页'
     }
@@ -37,14 +37,22 @@ export default {
   background-color: $blue;
   color: #fff;
   font-size: 18px;
-  padding: px2Rem(10);
+  padding: px2Rem(5) px2Rem(10);
+  .header-left {
+    flex: 1;
+    text-align: left;
+  }
+  .header-title {
+    flex: 2;
+    text-align: center;
+  }
+  .header-right {
+    flex: 1;
+    text-align: right;
+  }
   .arrow-left {
     vertical-align: middle;
     @include arrow-left(10px, #fff, $blue);
-  }
-  .header-wrapper {
-    flex: 1;
-    text-align: center;
   }
 }
 </style>
