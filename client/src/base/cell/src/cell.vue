@@ -5,7 +5,7 @@
     </div>
     <div class="cell-wrapper">
       <!-- 可视区域内容 -->
-      <div class="cell-title">
+      <div class="cell-title" v-if="!!title">
         <slot name="icon">
           <i v-if="icon" :class="'icon-' + icon"></i>
         </slot>
@@ -94,6 +94,7 @@ export default {
   }
   .cell-title {
     text-align: left;
+    width: 30%;
   }
   .cell-text {
     font-size: px2Rem(16);
@@ -104,6 +105,8 @@ export default {
   }
   .cell-value {
     font-size: px2Rem(18);
+    width: 100%;
+    text-align: right;
   }
   .cell-right {
     transform: translateX(100%);
