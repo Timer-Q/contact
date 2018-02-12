@@ -3,6 +3,15 @@
 @import './mixins/index.scss';
 @import './functions/main.scss';
 
+body {
+    background: #fafafa;
+}
+
+.page-part {
+    background: #fff;
+    margin-bottom: px2Rem(15);
+}
+
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
 ::-webkit-scrollbar  
 {  

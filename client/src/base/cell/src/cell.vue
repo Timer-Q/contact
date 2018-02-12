@@ -88,9 +88,10 @@ export default {
     min-height: inherit;
     padding: 0 px2Rem(10);
     background-image: linear-gradient(to top, $gray, $gray 50%, transparent 100%);
-    background-size: 100% 1px;
+    background-size: 120% 1px;
     background-repeat: no-repeat;
     background-position: 0 100%;
+    background-origin: content-box;
   }
   .cell-title {
     text-align: left;
@@ -104,12 +105,28 @@ export default {
     color: $lightDark;
   }
   .cell-value {
+    display: flex;
+    align-items: center;
     font-size: px2Rem(18);
     width: 100%;
     text-align: right;
+    padding: px2Rem(5) 0;
   }
   .cell-right {
     transform: translateX(100%);
+  }
+  &:last-child {
+    .cell-wrapper {
+      background-origin: border-box;
+    }
+  }
+}
+.page-part {
+  .cell:first-child {
+    background-image: linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 100%);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100% 1px;
   }
 }
 </style>
