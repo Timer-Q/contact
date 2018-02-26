@@ -13,6 +13,9 @@
         <span>11233223</span>
       </c-input>
     </section>
+    <section class="page-part">
+      <c-date-picker/>
+    </section>
   </section>
 </template>
 
