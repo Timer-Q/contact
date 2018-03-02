@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header-left">
-      <a v-if="isNeedBack" href="javascript:;" class="arrow-left"></a>
+      <a v-if="isNeedBack" href="javascript:;" class="arrow-left" @click="handleNavigatorBack"></a>
     </div>
     <section class="header-title">
       {{title}}
@@ -23,6 +23,11 @@ export default {
     title: {
       type: String,
       default: '首页'
+    }
+  },
+  methods: {
+    handleNavigatorBack () {
+      this.$router.back()
     }
   }
 }

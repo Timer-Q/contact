@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 
 import login from '@/router/login'
 
+import main from '@/router/main'
+
 Vue.use(Router)
 
 export default new Router({
@@ -11,8 +13,10 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      redirect: '/login'
     },
-    ...login
+    ...login,
+    ...main
   ]
 })
