@@ -1,6 +1,6 @@
 <template>
   <section class="picker">
-    <c-picker-item :listData="pickerData" :showLine="showLine"/>
+    <c-picker-item @valueChange="pickerValueChange" :listData="pickerData" :showLine="showLine"/>
   </section>
 </template>
 
@@ -18,6 +18,11 @@ export default {
     return {
       pickerData: initialData(),
       showLine: 3
+    }
+  },
+  methods: {
+    pickerValueChange (value) {
+      this.$emit('input', value)
     }
   },
   components: {

@@ -2,16 +2,16 @@
   <section class="picker-content" :style="{height: showLine * itemHeight + 'px'}">
     <div
       class="picker-list"
+      :style="{transform: `translateY(${touchObj.translateY}px)`}"
       @touchstart="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
-      :style="{transform: `translateY(${touchObj.translateY}px)`}"
       ref="list">
       <div
         class="picker-item"
         v-for="(item, index) in listData"
         :key="item"
-        @click="handlePickerItemClick(index)">
+        @click.stop="handlePickerItemClick(index)">
         {{item}}
       </div>
     </div>
@@ -44,6 +44,17 @@ export default {
       getValFunc: null
     }
   },
+  mounted () {
+    this.touchObj.translateY = this.itemHeight * this.offsetItem
+    this.touchObj.lastTanslateY = this.touchObj.translateY
+    // 这样写有问题 transition 不正常
+    // const element = this.$refs.list
+    // if (element) {
+    //   element.addEventListener('touchstart', this.handleTouchStart)
+    //   element.addEventListener('touchmove', this.handleTouchMove)
+    //   element.addEventListener('touchend', this.handleTouchEnd)
+    // }
+  },
   methods: {
     handleTouchStart (event) {
       const touches = event.changedTouches[0] || event.touches[0]
@@ -66,7 +77,7 @@ export default {
         this.touchObj.translateY = this.upMaxDistance
       }
       this.touchObj.translateY = Math.round(this.touchObj.translateY / this.itemHeight) * this.itemHeight
-      console.log(this.selectedValue)
+      // this.$emit('valueChange', this.selectedValue)
     },
     handlePickerItemClick (index) {
       this.touchObj.translateY = (this.offsetItem - index) * this.itemHeight
@@ -83,7 +94,7 @@ export default {
      * 向下拉 最大距离
      */
     downMaxDistance () {
-      return this.showLine * this.itemHeight - (this.offsetItem + 1) * this.itemHeight
+      return (this.showLine - this.offsetItem - 1) * this.itemHeight
     },
     /**
      * 向上拉 最大距离
@@ -94,6 +105,12 @@ export default {
     selectedValue () {
       const index = Math.abs(this.touchObj.translateY - this.offsetItem * this.itemHeight) / this.itemHeight
       return this.listData[index]
+    }
+  },
+  watch: {
+    'touchObj.translateY' (val) {
+      if (Math.abs(val % this.itemHeight) !== 0) return
+      this.$emit('valueChange', this.selectedValue)
     }
   }
 }
