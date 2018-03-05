@@ -7,17 +7,11 @@
 <script>
 export default {
   name: 'CPicker',
-  data () {
-    function initialData () {
-      let arr = []
-      for (let i = 0; i < 10; i++) {
-        arr.push(i)
-      }
-      return arr
-    }
-    return {
-      pickerData: initialData(),
-      showLine: 3
+  props: {
+    pickerData: [Array],
+    showLine: {
+      type: Number,
+      default: 3
     }
   },
   methods: {

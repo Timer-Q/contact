@@ -11,10 +11,12 @@
         class="picker-item"
         v-for="(item, index) in listData"
         :key="item"
-        @click.stop="handlePickerItemClick(index)">
+        @click.stop="handlePickerItemClick(index)"
+        :style="{transform: `rotateX(${(selectedIndex - index) * 15}deg)`}">
         {{item}}
       </div>
     </div>
+    <div class="picker-device" :style="{height: itemHeight + 'px', top: itemHeight * offsetItems + 'px'}"></div>
   </section>
 </template>
 <script>
@@ -41,19 +43,13 @@ export default {
         lastTanslateY: 0
       },
       pickDate: null,
-      getValFunc: null
+      getValFunc: null,
+      timer: null
     }
   },
   mounted () {
-    this.touchObj.translateY = this.itemHeight * this.offsetItem
+    this.touchObj.translateY = this.itemHeight * this.offsetItems
     this.touchObj.lastTanslateY = this.touchObj.translateY
-    // 这样写有问题 transition 不正常
-    // const element = this.$refs.list
-    // if (element) {
-    //   element.addEventListener('touchstart', this.handleTouchStart)
-    //   element.addEventListener('touchmove', this.handleTouchMove)
-    //   element.addEventListener('touchend', this.handleTouchEnd)
-    // }
   },
   methods: {
     handleTouchStart (event) {
@@ -80,37 +76,44 @@ export default {
       // this.$emit('valueChange', this.selectedValue)
     },
     handlePickerItemClick (index) {
-      this.touchObj.translateY = (this.offsetItem - index) * this.itemHeight
+      this.touchObj.translateY = (this.offsetItems - index) * this.itemHeight
     }
   },
   computed: {
     /**
      * 中间选中的值 距离顶端隔了几个 item
      */
-    offsetItem () {
+    offsetItems () {
       return parseInt(this.showLine / 2)
     },
     /**
      * 向下拉 最大距离
      */
     downMaxDistance () {
-      return (this.showLine - this.offsetItem - 1) * this.itemHeight
+      return (this.showLine - this.offsetItems - 1) * this.itemHeight
     },
     /**
      * 向上拉 最大距离
      */
     upMaxDistance () {
-      return -this.listData.length * this.itemHeight + (this.offsetItem + 1) * this.itemHeight
+      return -this.listData.length * this.itemHeight + (this.offsetItems + 1) * this.itemHeight
+    },
+    selectedIndex () {
+      return Math.abs(this.touchObj.translateY - this.offsetItems * this.itemHeight) / this.itemHeight
     },
     selectedValue () {
-      const index = Math.abs(this.touchObj.translateY - this.offsetItem * this.itemHeight) / this.itemHeight
-      return this.listData[index]
+      return this.listData[this.selectedIndex]
     }
   },
   watch: {
     'touchObj.translateY' (val) {
-      if (Math.abs(val % this.itemHeight) !== 0) return
-      this.$emit('valueChange', this.selectedValue)
+      // 小小 debounce 一下
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(_ => {
+        this.$emit('valueChange', this.selectedValue)
+      }, 100)
     }
   }
 }
@@ -118,15 +121,30 @@ export default {
 
 <style lang="scss" scoped>
 .picker-content {
+  position: relative;
   overflow: hidden;
   width: 100%;
   .picker-list {
     transition: all .2s;
+    perspective: 200px;
+    transform-style: preserve-3d;
+    perspective-origin: 50% 50%;
     .picker-item {
       font-size: 18px;
       line-height: 2;
+      backface-visibility: hidden;
       text-align: center;
+      transition: all 0s;
     }
+  }
+  .picker-device {
+    position: absolute;
+    width: 100%;
+    top: 36px;
+    left: 0;
+    height: 36px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
   }
 }
 </style>
