@@ -7,10 +7,7 @@ import router from './router'
 import 'lib-flexible'
 import baseComponents from '@/base'
 
-Object.keys(baseComponents).forEach(key => {
-  console.log(baseComponents[key]['name'])
-  Vue.component(baseComponents[key]['name'], baseComponents[key])
-})
+Vue.use(baseComponents)
 
 Vue.config.productionTip = false
 

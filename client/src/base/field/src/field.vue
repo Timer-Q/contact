@@ -28,6 +28,7 @@
 <script>
 import cell from '@/base/cell'
 export default {
+  name: 'CInput',
   props: {
     type: {
       type: String,

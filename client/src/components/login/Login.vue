@@ -31,6 +31,12 @@ export default {
         path: '/datePicker'
       })
     }
+  },
+  mounted () {
+    this.$toast({
+      message: 'lalala',
+      position: 'middle'
+    })
   }
 }
 </script>

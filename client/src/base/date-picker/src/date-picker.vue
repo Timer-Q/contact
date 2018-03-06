@@ -26,7 +26,7 @@
       <span class="date-items" v-for="item in headerWeek" :key="item">
         {{item}}
       </span>
-      <span class="date-items" :class="[`date-items-${item.label}`, {'date-choose': selectedDate.year === item.year && selectedDate.month === item.month && selectedDate.date === item.date}]" v-for="(item, index) in days" :key="index" @click="handleItemClick(item)">
+      <span class="date-items" @click="handleItemClick(item)" v-for="(item, index) in days" :key="index" :class="[`date-items-${item.label}`, {'date-choose': selectedDate.year === item.year && selectedDate.month === item.month && selectedDate.date === item.date}]">
         {{item.date}}
       </span>
     </div>
@@ -71,6 +71,9 @@ export default {
       this.selectedDate.date = date.date
       this.selectedDate.dateObj = new Date(this.selectedDate.year, this.selectedDate.month, this.selectedDate.date)
       console.log(this.selectedDate)
+      this.$nextTick(_ => {
+        this.$emit('dateSelect', this.selectedDate)
+      })
     },
     // 初始化天数
     getMonthData (year, month) {
