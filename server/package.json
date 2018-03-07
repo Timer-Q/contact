@@ -4,11 +4,16 @@
   "description": "仿知乎 server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.4.1"
+    "koa": "^2.4.1",
+    "koa-route": "^3.2.0"
+  },
+  "devDependencies": {
+    "koa2-cors": "^2.0.5"
   }
 }

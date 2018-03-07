@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import test from '@/services/test'
 export default {
   methods: {
     handleLogin () {
@@ -33,10 +34,7 @@ export default {
     }
   },
   mounted () {
-    this.$toast({
-      message: 'lalala',
-      position: 'middle'
-    })
+    console.log(test.test())
   }
 }
 </script>
