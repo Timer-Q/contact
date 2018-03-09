@@ -24,8 +24,8 @@
             {{value}}
           </span>
         </slot>
-        <i v-if="isLink" class="cell-allow-right"></i>
       </div>
+      <i v-if="isLink" class="cell-allow-right"></i>
     </div>
     <div class="cell-right">
       <!-- 左滑显示内容 -->
@@ -55,7 +55,7 @@
  * </mt-cell>
  */
 export default {
-  name: 'cell',
+  name: 'CCell',
   props: {
     to: [String, Object],
     icon: String,
@@ -119,6 +119,9 @@ export default {
     .cell-wrapper {
       background-origin: border-box;
     }
+  }
+  .cell-allow-right {
+    @include arrow-left(8px, #333, #fff, 180deg);
   }
 }
 .page-part {

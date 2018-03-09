@@ -1,17 +1,10 @@
 import axios from 'axios'
-import testService from './test'
 
 const http = axios.create({
   baseURL: 'http://10.14.133.63:3000'
 })
 
-async function getData () {
-  const data = await testService.test()
-  console.log(data)
-}
-
 http.interceptors.request.use(config => {
-  getData()
   return config
 }, error => console.error(error))
 

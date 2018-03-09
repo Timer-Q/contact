@@ -1,7 +1,7 @@
-import cell from './src/cell.vue'
+import CCell from './src/cell.vue'
 
-cell.install = function (Vue) {
-  Vue.component(cell.name, cell)
+CCell.install = function (Vue) {
+  Vue.component(CCell.name, CCell)
 }
 
-export default cell
+export default CCell

@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     getDate (date) {
-      console.log(date)
+      this.$toast(this.date.date)
       this.date = date
     }
   }

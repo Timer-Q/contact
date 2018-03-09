@@ -218,7 +218,7 @@ export default {
   }
   .date-picker-header-slider {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     position: absolute;
     z-index: 9;
     top: 0;
@@ -242,7 +242,7 @@ export default {
   }
   .date-picker-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr);
   }
   .date-items {
     height: 55px;

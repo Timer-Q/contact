@@ -17,6 +17,8 @@
       </div>
     </div>
     <div class="picker-device" :style="{height: itemHeight + 'px', top: itemHeight * offsetItems + 'px'}"></div>
+    <div class="picker-mask-top" :style="{height: itemHeight * offsetItems + 'px'}"></div>
+    <div class="picker-mask-bottom" :style="{height: itemHeight * offsetItems + 'px'}"></div>
   </section>
 </template>
 <script>
@@ -124,6 +126,7 @@ export default {
   position: relative;
   overflow: hidden;
   width: 100%;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)), linear-gradient(to top, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
   .picker-list {
     transition: all .2s;
     perspective: 200px;
@@ -145,6 +148,24 @@ export default {
     height: 36px;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+  }
+  .picker-mask-top,
+  .picker-mask-bottom {
+    position: absolute;
+    width: 100%;
+    height: 36px;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+    background-repeat: no-repeat;
+  }
+  .picker-mask-top {
+    top: 0;
+    background-image: linear-gradient(top, #fff, transparent);
+  }
+  .picker-mask-bottom {
+    bottom: 0;
+    background-image: linear-gradient(bottom, #fff, transparent);
   }
 }
 </style>
