@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  appearance: none;
+  -webkit-appearance: none;
   box-sizing: border-box;
   border: none;
   outline: none;
