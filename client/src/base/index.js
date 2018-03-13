@@ -4,6 +4,7 @@ import CCell from '@/base/cell'
 import CDatePicker from '@/base/date-picker'
 import CPicker from '@/base/picker'
 import CPopup from '@/base/popup'
+import CButton from '@/base/button'
 import Toast from '@/base/toast'
 
 const install = function (Vue) {
@@ -15,6 +16,7 @@ const install = function (Vue) {
   Vue.component(CDatePicker.name, CDatePicker)
   Vue.component(CPicker.name, CPicker)
   Vue.component(CPopup.name, CPopup)
+  Vue.component(CButton.name, CButton)
 
   Vue.prototype.$toast = Toast
 }

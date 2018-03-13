@@ -13,5 +13,10 @@ export default [
     path: '/picker',
     name: 'picker',
     component: _ => import('@/components/picker/picker.vue')
+  },
+  {
+    path: '/toast',
+    name: 'toast',
+    component: _ => import('@/components/toast/toast.vue')
   }
 ]

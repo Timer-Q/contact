@@ -4,7 +4,7 @@ import ToastComponent from './toast.vue'
 const ToastContructor = Vue.extend(ToastComponent)
 
 const getAnInstance = options => {
-  const { message, position, className } = options
+  const { message, position, className, duration } = options
   return new ToastContructor({
     el: document.createElement('div'),
     data () {
@@ -12,7 +12,8 @@ const getAnInstance = options => {
         message: message || options,
         position: position || 'bottom',
         className,
-        visible: true
+        visible: true,
+        duration
       }
     }
   })
@@ -20,11 +21,12 @@ const getAnInstance = options => {
 
 const Toast = (options = {}) => {
   const instance = getAnInstance(options)
+  const duration = instance.duration || 1000
   document.body.appendChild(instance.$el)
   console.log(instance)
   setTimeout(_ => {
     instance.close()
-  }, 1000)
+  }, duration)
 }
 
 export default Toast
