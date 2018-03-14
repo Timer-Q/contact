@@ -1,6 +1,7 @@
 <template>
   <section class="toast" :class="[position, {'hide': !visible}]">
     <div class="toast-content">
+      <i v-if="className" class="iconfont" :class="`icon-${className}`"></i>
       {{message}}
     </div>
   </section>
@@ -44,6 +45,11 @@ export default {
     padding: px2Rem(5);
     color: #fff;
     font-size: 14px;
+    .iconfont {
+      display: block;
+      width: 100%;
+      font-size: px2Rem(30);
+    }
   }
   &.top {
     top: 10%;

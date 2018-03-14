@@ -11,8 +11,8 @@ const getAnInstance = options => {
       return {
         message: message || options,
         position: position || 'bottom',
-        className,
         visible: true,
+        className,
         duration
       }
     }

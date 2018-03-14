@@ -1,8 +1,9 @@
 <template>
   <button
     class="button"
-    :class="[`button-${type}`, `button-${size}`]"
-    :type="nativeType">
+    :class="[`button-${type}`, `button-${size}`, {'button-disabled': disabled}]"
+    :type="nativeType"
+    :disabled="disabled">
     <slot></slot>
   </button>
 </template>
@@ -28,6 +29,10 @@ export default {
       validator (value) {
         return ['small', 'normal', 'large'].indexOf(value) > -1
       }
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -46,10 +51,10 @@ export default {
 }
 .button-default {
   color: #656b79;
-  background-color: $lightDark;
+  background-color: $lightGray;
   box-shadow: 0 0 1px #b8bbbf;
   &:active {
-    background: darken($lightDark, 5%);
+    background: darken($lightGray, 5%);
   }
 }
 .button-primary {
@@ -85,5 +90,8 @@ export default {
   line-height: px2Rem(34);
   font-size: 16px;
   padding: 0 16px;
+}
+.button-disabled {
+  opacity: .6;
 }
 </style>

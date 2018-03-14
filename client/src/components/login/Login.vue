@@ -16,7 +16,7 @@
 <script>
 export default {
   methods: {
-    handleLogin() {
+    handleLogin () {
       this.$router.push({
         path: '/main'
       })
