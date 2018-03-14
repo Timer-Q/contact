@@ -1,7 +1,7 @@
 <template>
   <button
     class="button"
-    :class="[`button-${type}`, `button-${size}`, {'button-disabled': disabled}]"
+    :class="[`button-${type}`, `button-${size}`, {'button-disabled': disabled}, {'is-plain': plain}]"
     :type="nativeType"
     :disabled="disabled">
     <slot></slot>
@@ -33,6 +33,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    plain: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -56,6 +60,11 @@ export default {
   &:active {
     background: darken($lightGray, 5%);
   }
+  &.is-plain {
+    background: #fff;
+    border: 1px solid $lightDark;
+    color: $lightDark;
+  }
 }
 .button-primary {
   color: #fff;
@@ -63,12 +72,22 @@ export default {
   &:active {
     background: darken($blue, 5%);
   }
+  &.is-plain {
+    background: #fff;
+    color: $blue;
+    border: 1px solid $blue;
+  }
 }
 .button-danger {
   color: #fff;
   background-color: $red;
   &:active {
     background: darken($red, 5%);
+  }
+  &.is-plain {
+    background: #fff;
+    color: $red;
+    border: 1px solid $red;
   }
 }
 .button-normal {
