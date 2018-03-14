@@ -18,5 +18,10 @@ export default [
     path: '/toast',
     name: 'toast',
     component: _ => import('@/components/toast/toast.vue')
+  },
+  {
+    path: '/button',
+    name: 'button',
+    component: _ => import('@/components/button/button.vue')
   }
 ]
