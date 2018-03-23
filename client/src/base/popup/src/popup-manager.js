@@ -32,7 +32,7 @@ const instances = {}
 
 const PopupManager = {
   zIndex: 2000,
-  getNextZIndex (arg) {
+  getNextZIndex () {
     return this.zIndex++
   },
   maskStack: [],
