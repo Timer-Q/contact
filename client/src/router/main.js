@@ -23,5 +23,10 @@ export default [
     path: '/button',
     name: 'button',
     component: _ => import('@/components/button/button.vue')
+  },
+  {
+    path: '/popup',
+    name: 'popup',
+    component: _ => import('@/components/popup/popup.vue')
   }
 ]

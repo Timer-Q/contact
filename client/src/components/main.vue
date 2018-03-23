@@ -31,6 +31,11 @@ export default {
           name: 'button',
           icon: '',
           path: '/button'
+        },
+        {
+          name: 'popup',
+          icon: '',
+          path: '/popup'
         }
       ]
     }
