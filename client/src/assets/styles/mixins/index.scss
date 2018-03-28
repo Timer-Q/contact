@@ -1,0 +1,24 @@
+@import '../consts.scss';
+// 左箭头 
+@mixin arrow-left($borderwidth: 10px, $borderColor: #666, $arrowBg: #fff, $rotate: 0) {
+    display: inline-block;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-width: $borderwidth;
+    border-style: solid;
+    border-color: transparent;
+    border-right-color: $borderColor;
+    margin-left: -$borderwidth;
+    transform: rotate($rotate);
+    &:after {
+        content: '';
+        position: absolute;
+        top: -$borderwidth;
+        right: -($borderwidth + 1px);
+        border-width: $borderwidth;
+        border-style: solid;
+        border-color: transparent;
+        border-right-color: $arrowBg;
+    }
+}
